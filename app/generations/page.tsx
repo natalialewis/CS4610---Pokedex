@@ -12,6 +12,7 @@ export default function GenerationsPage() {
       <SearchableGrid
         data={generations}
         typeName="Generations"
+        hrefBase="generations"
       />
     </>
   );

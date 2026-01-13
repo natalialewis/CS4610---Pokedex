@@ -12,6 +12,7 @@ export default function PokemonPage() {
       <SearchableGrid
         data={pokemon}
         typeName="Pokémon"
+        hrefBase="pokemon"
       />
     </>
   );

@@ -12,6 +12,7 @@ export default function MovesPage() {
       <SearchableGrid
         data={moves}
         typeName="Moves"
+        hrefBase="moves"
       />
     </>
   );

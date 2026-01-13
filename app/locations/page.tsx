@@ -12,6 +12,7 @@ export default function LocationsPage() {
       <SearchableGrid
         data={locations}
         typeName="Locations"
+        hrefBase="locations"
       />
     </>
   );

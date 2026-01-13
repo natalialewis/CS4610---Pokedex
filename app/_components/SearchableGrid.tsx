@@ -7,11 +7,13 @@ import { PokemonList, LocationList, MoveList, GenerationList } from "@/utils/pok
 type SearchableGridProps = {
   data: PokemonList | LocationList | MoveList | GenerationList; // Can accept any of the list types because they share the same structure
   typeName: string; // e.g., "Pokemon", "Moves", "Generations", "Locations"
+  hrefBase: string; // Base path for the href, e.g., "pokemon", "moves"
 };
 
 export default function SearchableGrid({
   data,
   typeName,
+  hrefBase,
 }: SearchableGridProps) {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -40,7 +42,7 @@ export default function SearchableGrid({
         {/* Items Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {filteredItems.map((item) => {
-            const href = `/${typeName.toLowerCase()}/${item.name}`;
+            const href = `/${hrefBase}/${item.name}`;
             return (
               <Link
                 key={item.name}
