@@ -61,3 +61,31 @@ export async function fetchGenerationList() {
     const generations = await response.json() as GenerationList;
     return generations;
 }
+
+// Type for individual Pokemon details (stats, normal and shiny sprites, locations, moves)
+export type PokemonDetails = {
+    name: string;
+    sprites: {
+        front_default: string;
+        front_shiny: string;
+    };
+    stats: { 
+        base_stat: number; // value of the stat
+        stat: {
+            name: string; // name of the stat
+        };
+    }[];
+    location_area_encounters: string; // URL to fetch location encounters
+    moves: { 
+        move: {
+            name: string; // name of the move
+        };
+    }[];
+}
+
+// Function to fetch details of a specific Pokemon by name
+export async function fetchPokemonDetails(name: string) {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    const data = await response.json() as PokemonDetails;
+    return data;
+}
