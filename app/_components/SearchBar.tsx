@@ -9,7 +9,7 @@ type SearchBarProps = {
 
 export default function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
   return (
-    <div className="relative mb-3">
+    <div className="relative mb-2 lg:mb-3">
       {/* Search Icon */}
       <svg
         className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
@@ -31,7 +31,7 @@ export default function SearchBar({ value, onChange, placeholder }: SearchBarPro
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full pl-10 pr-4 py-2 text-base border-2 border-gray-500 rounded-lg focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all"
+        className="w-full pl-10 pr-4 py-1 lg:py-2 text-sm lg:text-base border-2 border-gray-500 rounded-lg focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all"
       />
     </div>
   );
