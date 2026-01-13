@@ -11,7 +11,7 @@ export default function PokemonPage() {
       <TabNavigation />
       <SearchableGrid
         data={pokemon}
-        typeName="Pokemon"
+        typeName="Pokémon"
       />
     </>
   );

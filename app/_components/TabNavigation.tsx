@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const tabs = [
-  { name: 'Pokemon', href: '/pokemon' },
+  { name: 'Pokémon', href: '/pokemon' },
   { name: 'Locations', href: '/locations' },
   { name: 'Moves', href: '/moves' },
   { name: 'Generations', href: '/generations' },
