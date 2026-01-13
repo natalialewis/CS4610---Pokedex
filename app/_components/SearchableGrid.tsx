@@ -24,8 +24,8 @@ export default function SearchableGrid({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-3">{`All ${typeName}`}</h1>
+      <div className="max-w-7xl mx-auto px-4 py-4 lg:px-8 lg:py-8">
+        <h1 className="lg:text-3xl text-xl font-bold text-gray-900 mb-3">{`All ${typeName}`}</h1>
 
         {/* Search Bar */}
         <SearchBar
@@ -35,19 +35,19 @@ export default function SearchableGrid({
         />
 
         {/* Number of Results */}
-        <div className="mb-4 text-gray-600 w-full text-right text-sm">
+        <div className="mb-2 lg:mb-4 text-gray-600 w-full text-right text-xs lg:text-sm">
           Showing {filteredItems.length} of {filteredItems.length}
         </div>
 
         {/* Items Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredItems.map((item) => {
             const href = `/${hrefBase}/${item.name}`;
             return (
               <Link
                 key={item.name}
                 href={href}
-                className="bg-blue-100/20 hover:bg-red-100/20 focus:bg-red-100/20 rounded-lg shadow-md hover:shadow-lg focus:shadow-lg transition-shadow p-4 border-2 border-blue-900 hover:border-[var(--pokemon-red)] focus:border-[var(--pokemon-red)] focus:outline-none group"
+                className="bg-blue-100/20 hover:bg-red-100/20 focus:bg-red-100/20 rounded-lg shadow-md hover:shadow-lg focus:shadow-lg transition-shadow p-1.5 lg:p-4 border-2 border-blue-900 hover:border-[var(--pokemon-red)] focus:border-[var(--pokemon-red)] focus:outline-none group"
               >
                 <h3 className="text-md font-medium text-gray-900 capitalize text-center">
                   {item.name.split("-").join(" ")}
