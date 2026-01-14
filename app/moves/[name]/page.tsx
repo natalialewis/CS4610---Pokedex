@@ -33,11 +33,11 @@ export default async function MoveDetailPage({ params }: MoveDetailsProps) {
                     </div>
                     <div className="border-1 border-blue-900/75 rounded-lg p-5 text-center flex flex-col items-center shadow-lg">
                         <p className="text-sm font-medium text-gray-600 mb-1">PP</p>
-                        <p className="text-gray-900 font-semibold text-[var(--pokemon-red)]">{data.pp}</p>
+                        <p className="text-gray-900 font-semibold text-[var(--pokemon-red)]">{data.pp ? data.pp : '—'}</p>
                     </div>
                     <div className="border-1 border-blue-900/75 rounded-lg p-5 text-center flex flex-col items-center shadow-lg">
                         <p className="text-sm font-medium text-gray-600 mb-1">Power</p>
-                        <p className="text-gray-900 font-semibold text-[var(--pokemon-red)]">{data.power}</p>
+                        <p className="text-gray-900 font-semibold text-[var(--pokemon-red)]">{data.power ? data.power : '—'}</p>
                     </div>
                 </div>
             </div>
