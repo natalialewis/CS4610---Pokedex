@@ -49,14 +49,14 @@ export default async function LocationDetailPage({ params }: LocationDetailProps
                           {area.name.replace(/-/g, ' ')}
                         </h3>
                         {area.pokemon.length > 0 ? (
-                          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                             {area.pokemon.map((pokemon) => (
                               <Link
                                 key={pokemon.name}
                                 href={`/pokemon/${pokemon.name}`}
                                 className="bg-red-50/80 hover:bg-red-100 border-1 border-red-400 hover:border-red-400 rounded-lg p-2 lg:p-4 transition-colors text-center"
                               >
-                                <p className="text-gray-900 font-medium capitalize text-sm">
+                                <p className="text-gray-900 font-medium capitalize">
                                   {pokemon.name.replace(/-/g, ' ')}
                                 </p>
                               </Link>
