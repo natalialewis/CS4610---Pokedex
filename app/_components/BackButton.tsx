@@ -7,7 +7,7 @@ export default function BackButton() {
   return (
     <button
       onClick={() => router.back()}
-      className="flex items-center gap-2 px-3 py-2 mb-3 text-sm font-medium text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-yellow-50/80 transition-colors shadow-sm"
+      className="flex items-center gap-2 px-3 py-2 mb-3 text-sm font-medium text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-yellow-50/80 transition-colors shadow-sm hover:border-yellow-400"
     >
       {/* left arrow icon */}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
