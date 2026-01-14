@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import BackButton from '../../_components/BackButton';
 import { fetchPokemonDetails } from '@/utils/pokemonapi';
 import Image from 'next/image';
+import SearchableSection from '../../_components/SearchableSection';
 
 type PokemonDetailProps = {
   params: Promise<{ name: string }>;
@@ -27,7 +27,7 @@ export default async function PokemonDetailPage(props: PokemonDetailProps) {
           {/* Sprites */}
           <div className="px-8 py-5">
             <div className="mb-5">
-              <h2 className="text-l lg:text-2xl font-bold text-gray-900 mb-2">Sprites</h2>
+              <h2 className="text-l lg:text-xl font-bold text-gray-900 mb-2">Sprites</h2>
               <div className="grid grid-cols-2 gap-4">
                 <div className="border-1 border-blue-900/75 rounded-lg p-5 text-center flex flex-col items-center shadow-lg">
                   <p className="text-sm font-medium text-gray-600 mb-1">Default</p>
@@ -42,7 +42,7 @@ export default async function PokemonDetailPage(props: PokemonDetailProps) {
 
             {/* Stats */}
             <div className="mb-5">
-              <h2 className="text-l font-bold text-gray-900 mb-2">Base Stats</h2>
+              <h2 className="text-l lg:text-xl font-bold text-gray-900 mb-2">Base Stats</h2>
               <div className="space-y-4 border-1 border-blue-900/75 rounded-lg p-6 shadow-lg">
                 {data.stats.map((stat) => (
                   <div key={stat.stat.name}>
@@ -64,40 +64,20 @@ export default async function PokemonDetailPage(props: PokemonDetailProps) {
             </div>
 
             {/* Locations */}
-            <div className="mb-5">
-              <h2 className="text-l font-bold text-gray-900 mb-2">Locations</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                {data.locations.map((loc) => (
-                  <Link
-                    key={loc.name}
-                    href={`/locations/${loc.name}`}
-                    className="bg-red-50/80 hover:bg-red-100 border-1 border-red-400 hover:border-red-400 rounded-lg p-2 lg:p-4 transition-colors text-center"
-                  >
-                    <p className="text-gray-900 font-medium capitalize">
-                      {loc.name.replace(/-/g, ' ')}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <SearchableSection
+              items={data.locations}
+              hrefBase="locations"
+              title="Locations"
+              tileColor="red"
+            />
 
             {/* Moves */}
-            <div>
-              <h2 className="text-l font-bold text-gray-900 mb-2">Moves</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                {data.moves.map((move) => (
-                  <Link
-                    key={move.move.name}
-                    href={`/moves/${move.move.name}`}
-                    className="bg-yellow-50/80 hover:bg-yellow-100 border-1 border-yellow-400 hover:border-yellow-400 rounded-lg p-2 lg:p-4 transition-colors text-center"
-                  >
-                    <p className="text-gray-900 font-medium capitalize">
-                      {move.move.name}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <SearchableSection
+              items={data.moves.map((move) => ({ name: move.move.name }))}
+              hrefBase="moves"
+              title="Moves"
+              tileColor="yellow"
+            />
           </div>
         </div>
       </div>
