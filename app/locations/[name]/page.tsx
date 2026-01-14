@@ -1,4 +1,3 @@
-import SearchableSection from '@/app/_components/SearchableSection';
 import BackButton from '../../_components/BackButton';
 import { fetchLocationDetails } from '@/utils/pokemonapi';
 import Link from 'next/link';
