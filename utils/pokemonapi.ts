@@ -186,3 +186,29 @@ export async function fetchLocationDetails(name: string) {
     
     return data;
 }
+
+// Type for move details
+export type MoveDetails = {
+    name: string;
+    accuracy: number | null;
+    pp: number | null;
+    power: number | null;
+    flavor_text_entries: {
+        flavor_text: string;
+        version_group: {
+            name: string;
+            url: string;
+        };
+    }[];
+    learned_by_pokemon: {
+        name: string;
+        url: string;
+    }[];
+};
+
+// Function to fetch details of a specific move by name
+export async function fetchMoveDetails(name: string) {
+    const response = await fetch(`https://pokeapi.co/api/v2/move/${name}`);
+    const data = await response.json() as MoveDetails;
+    return data;
+}
