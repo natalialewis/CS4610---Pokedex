@@ -64,7 +64,7 @@ export default async function LocationDetailPage({ params }: LocationDetailProps
                             ))}
                           </div>
                         ) : (
-                          <p className="text-gray-500 text-sm">No Pokemon found in this area.</p>
+                          <p className="text-gray-500 text-sm">No Pokémon found in this area.</p>
                         )}
                       </div>
 
