@@ -62,6 +62,22 @@ export async function fetchGenerationList() {
     return generations;
 }
 
+// Type for location area encounter response
+type LocationAreaEncounter = {
+    location_area: {
+        name: string;
+        url: string;
+    };
+};
+
+// Type for location area API response
+type LocationArea = {
+    location: {
+        name: string;
+        url: string;
+    };
+};
+
 // Type for individual Pokemon details (stats, normal and shiny sprites, locations, moves)
 export type PokemonDetails = {
     name: string;
@@ -81,16 +97,37 @@ export type PokemonDetails = {
             name: string; // name of the move
         };
     }[];
+    locations: { name: string }[]; // array of location names where the Pokemon can be found (not in main API response)
 }
 
 // Function to fetch details of a specific Pokemon by name
 export async function fetchPokemonDetails(name: string) {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
     const data = await response.json() as PokemonDetails;
+    
+    // Fetch location encounters url from data (have to follow a chain to get just the location names)
+    const encountersUrl = data.location_area_encounters.startsWith('http')
+        ? data.location_area_encounters // if given full URL
+        : `https://pokeapi.co${data.location_area_encounters}`; // if given relative URL
+    
+    const encountersResponse = await fetch(encountersUrl);
+    const encounters = await encountersResponse.json() as LocationAreaEncounter[];
+    
+    // Fetch location area details to get main locations
+    const locationAreaPromises = encounters.map(async (encounter) => {
+        const locationAreaUrl = encounter.location_area.url;
+        const locationAreaResponse = await fetch(locationAreaUrl);
+        const locationArea = await locationAreaResponse.json() as LocationArea;
+        return locationArea.location.name;
+    });
+    
+    const locationNames = await Promise.all(locationAreaPromises);
+    
+    // Remove duplicates (if a pokemon appears in multiple location areas but the same main location) and create locations array
+    const uniqueLocations = Array.from(new Set(locationNames)).map(name => ({ name }));
+    
+    // Add locations to the data
+    data.locations = uniqueLocations;
+    
     return data;
 }
-
-// Type for location details
-export type LocationDetails = {
-    name: string;
-};
