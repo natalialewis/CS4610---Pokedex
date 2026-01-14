@@ -215,3 +215,23 @@ export async function fetchMoveDetails(name: string) {
     const data = await response.json() as MoveDetails;
     return data;
 }
+
+// Type for generation details
+export type GenerationDetails = {
+    name: string;
+    main_region: {
+        name: string;
+        url: string;
+    };
+    pokemon_species: {
+        name: string;
+        url: string;
+    }[];
+};
+
+// Function to fetch details of a specific generation by name
+export async function fetchGenerationDetails(name: string) {
+    const response = await fetch(`https://pokeapi.co/api/v2/generation/${name}`);
+    const data = await response.json() as GenerationDetails;
+    return data;
+}
