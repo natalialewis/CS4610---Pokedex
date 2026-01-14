@@ -148,7 +148,7 @@ export type LocationDetails = {
     region: {
         name: string;
         url: string;
-    };
+    } | null;
     areas: {
         name: string; // name of the area
         url: string; // URL to fetch area details

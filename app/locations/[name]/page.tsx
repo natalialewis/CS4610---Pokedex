@@ -28,9 +28,13 @@ export default async function LocationDetailPage({ params }: LocationDetailProps
             <div className="mb-5">
               <h2 className="text-l lg:text-xl font-bold text-gray-900 mb-2">Region</h2>
               <div className="border-1 border-blue-900/75 rounded-lg p-6 shadow-lg">
-                <p className="text-gray-900 font-medium capitalize">
-                  {data.region.name.replace(/-/g, ' ')}
-                </p>
+                {data.region ? (
+                  <p className="text-gray-900 font-medium capitalize">
+                    {data.region.name.replace(/-/g, ' ')}
+                  </p>
+                ) : (
+                  <p className="text-gray-500 text-sm">This is a special battle location, it does not belong to a region.</p>
+                )}
               </div>
             </div>
 
