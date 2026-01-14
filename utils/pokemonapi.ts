@@ -131,3 +131,58 @@ export async function fetchPokemonDetails(name: string) {
     
     return data;
 }
+
+// Type for location area API response (for fetching Pokemon encounters)
+type LocationAreaResponse = {
+    pokemon_encounters: {
+        pokemon: {
+            name: string;
+            url: string;
+        };
+    }[];
+};
+
+// Type for location details
+export type LocationDetails = {
+    name: string;
+    region: {
+        name: string;
+        url: string;
+    };
+    areas: {
+        name: string; // name of the area
+        url: string; // URL to fetch area details
+        pokemon: { name: string }[]; // array of Pokemon names found in this area (not in main API response)
+    }[];
+};
+
+// Function to fetch details of a specific location by name
+export async function fetchLocationDetails(name: string) {
+    const response = await fetch(`https://pokeapi.co/api/v2/location/${name}`);
+    const data = await response.json() as LocationDetails;
+    
+    // Fetch Pokemon for each area
+    const areaPromises = data.areas.map(async (area) => {
+        const areaUrl = area.url.startsWith('http')
+            ? area.url
+            : `https://pokeapi.co${area.url}`;
+        
+        const areaResponse = await fetch(areaUrl);
+        const areaData = await areaResponse.json() as LocationAreaResponse;
+        
+        // Extract unique Pokemon names from pokemon_encounters
+        const pokemonNames = Array.from(
+            new Set(areaData.pokemon_encounters.map(encounter => encounter.pokemon.name))
+        ).map(name => ({ name }));
+        
+        return {
+            ...area,
+            pokemon: pokemonNames
+        };
+    });
+    
+    // Wait for all area fetches to complete
+    data.areas = await Promise.all(areaPromises);
+    
+    return data;
+}
