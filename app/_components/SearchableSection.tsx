@@ -54,7 +54,7 @@ export default function SearchableSection({
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder={`Search ${title.toLowerCase()}...`}
+              placeholder={`Search ${title.toLowerCase()}`}
               className="w-full pl-8 pr-3 py-2 text-md border-1 border-blue-900/75 rounded-lg focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all"
             />
           </div>
