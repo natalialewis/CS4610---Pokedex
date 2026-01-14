@@ -69,6 +69,7 @@ export default async function PokemonDetailPage(props: PokemonDetailProps) {
               hrefBase="locations"
               title="Locations"
               tileColor="red"
+              emptyMessage="No locations found for this Pokémon."
             />
 
             {/* Moves */}
@@ -77,6 +78,7 @@ export default async function PokemonDetailPage(props: PokemonDetailProps) {
               hrefBase="moves"
               title="Moves"
               tileColor="yellow"
+              emptyMessage="No moves found for this Pokémon."
             />
           </div>
         </div>
