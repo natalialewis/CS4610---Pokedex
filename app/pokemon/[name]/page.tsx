@@ -19,7 +19,7 @@ export default async function PokemonDetailPage(props: PokemonDetailProps) {
         <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-blue-700/90 p-1 lg:p-2 flex justify-center items-center flex-col">
-            <h1 className="lg:text-3xl text-xl font-bold text-white capitalize mb-2 [text-shadow:0_0_2px_rgba(0,0,0,0.8)]">
+            <h1 className="lg:text-3xl text-xl font-bold text-white capitalize [text-shadow:0_0_2px_rgba(0,0,0,0.8)]">
               {data.name}
             </h1>
           </div>
@@ -66,18 +66,18 @@ export default async function PokemonDetailPage(props: PokemonDetailProps) {
             {/* Locations */}
             <div className="mb-5">
               <h2 className="text-l font-bold text-gray-900 mb-2">Locations</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {/* {locations.map((loc) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                {data.locations.map((loc) => (
                   <Link
-                    key={loc.location_area.name}
-                    href={`/locations/${loc.location_area.name}`}
+                    key={loc.name}
+                    href={`/locations/${loc.name}`}
                     className="bg-red-50/80 hover:bg-red-100 border-1 border-red-400 hover:border-red-400 rounded-lg p-2 lg:p-4 transition-colors text-center"
                   >
                     <p className="text-gray-900 font-medium capitalize">
-                      {loc.location_area.name}
+                      {loc.name.replace(/-/g, ' ')}
                     </p>
-                  </Link> */}
-                {/* ))} */}
+                  </Link>
+                ))}
               </div>
             </div>
 
