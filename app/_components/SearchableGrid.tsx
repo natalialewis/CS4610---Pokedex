@@ -47,7 +47,7 @@ export default function SearchableGrid({
               <Link
                 key={item.name}
                 href={href}
-                className="bg-blue-100/20 hover:bg-red-100/20 focus:bg-red-100/20 rounded-lg shadow-md hover:shadow-lg focus:shadow-lg transition-shadow p-1.5 lg:p-4 border-2 border-blue-900 hover:border-[var(--pokemon-red)] focus:border-[var(--pokemon-red)] focus:outline-none group"
+                className="bg-blue-100/20 hover:bg-red-100/20 focus:bg-red-100/20 rounded-lg shadow-md hover:shadow-lg focus:shadow-lg transition-shadow p-2 lg:p-4 border-2 border-blue-900 hover:border-[var(--pokemon-red)] focus:border-[var(--pokemon-red)] focus:outline-none group"
               >
                 <h3 className="text-md font-medium text-gray-900 capitalize text-center">
                   {item.name.split("-").join(" ")}
