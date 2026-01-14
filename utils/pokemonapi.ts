@@ -89,3 +89,8 @@ export async function fetchPokemonDetails(name: string) {
     const data = await response.json() as PokemonDetails;
     return data;
 }
+
+// Type for location details
+export type LocationDetails = {
+    name: string;
+};
