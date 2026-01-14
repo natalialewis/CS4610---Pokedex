@@ -7,6 +7,7 @@ type SearchableSectionProps = {
   hrefBase: string;
   title: string;
   tileColor: "red" | "yellow";
+  emptyMessage?: string;
 };
 
 export default function SearchableSection({
@@ -14,6 +15,7 @@ export default function SearchableSection({
   hrefBase,
   title,
   tileColor,
+  emptyMessage,
 }: SearchableSectionProps) {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -75,7 +77,9 @@ export default function SearchableSection({
         ) : (
           <div className="col-span-full text-center py-4">
             <p className="text-gray-500 text-sm">
-              No {title.toLowerCase()} found matching "{searchTerm}"
+              {searchTerm.trim() === "" && emptyMessage
+                ? emptyMessage
+                : `No ${title.toLowerCase()} found matching "${searchTerm}"`}
             </p>
           </div>
         )}
