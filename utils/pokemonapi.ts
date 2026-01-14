@@ -195,6 +195,9 @@ export type MoveDetails = {
     power: number | null;
     flavor_text_entries: {
         flavor_text: string;
+        language: {
+            name: string;
+        };
         version_group: {
             name: string;
             url: string;
