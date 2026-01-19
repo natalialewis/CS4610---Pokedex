@@ -4,7 +4,7 @@ A comprehensive Pokémon encyclopedia built with Next.js, TypeScript, and Tailwi
 
 ## Access the Live Application
 
-🌐 **Live Application**: [cs-4610-pokedex.vercel.app](cs-4610-pokedex.vercel.app)
+🌐 **Live Application**: [cs-4610-pokedex.vercel.app](www.cs-4610-pokedex.vercel.app)
 
 ## Features
 
