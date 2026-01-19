@@ -2,6 +2,10 @@
 
 A comprehensive Pokémon encyclopedia built with Next.js, TypeScript, and Tailwind CSS. This application allows users to explore and search through Pokémon, locations, moves, and generations from the Pokémon universe.
 
+## Access the Live Application
+
+🌐 **Live Application**: [cs-4610-pokedex.vercel.app](cs-4610-pokedex.vercel.app)
+
 ## Features
 
 - **Searchable Lists**: Browse and search through Pokémon, locations, moves, and generations
@@ -9,10 +13,6 @@ A comprehensive Pokémon encyclopedia built with Next.js, TypeScript, and Tailwi
 - **Location Explorer**: Discover where Pokémon can be found across different game locations
 - **Move Data**: Learn about moves, their stats, flavor text, and which Pokémon can learn them
 - **Generation Browser**: Explore Pokémon by generation and their associated regions
-
-## Access the Application
-
-🌐 **Live Application**: [cs-4610-pokedex.vercel.app](cs-4610-pokedex.vercel.app)
 
 ## Technology Stack
 
